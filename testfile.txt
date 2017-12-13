@@ -1,0 +1,4 @@
+git add
+git commit -m "Test commit" -m "Testing if new files are being added correctly to origin"[D[D[D[D[D[D[D[D the github[B[D[C[C[C[C[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[Dbranches[2~ are[3~[3~[3~ added correctly to the github origin"
+git status
+git diff
