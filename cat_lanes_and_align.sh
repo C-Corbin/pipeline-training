@@ -26,48 +26,48 @@
 #rm ../../home/stpuser/aligned_seqs/temp_L002.bam
 #
 ##Sample 1606034-S1612259-02_CGAACTTA
-cd ../software/bwa-0.7.15
+#cd ../software/bwa-0.7.15
 #bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1606034-S1612259-02_CGAACTTA_L001_R1_001.fastq.gz ../../example_fastqs/1606034-S1612259-02_CGAACTTA_L001_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L001.bam
-bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1606034-S1612259-02_CGAACTTA_L002_R1_001.fastq.gz ../../example_fastqs/1606034-S1612259-02_CGAACTTA_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
+#bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1606034-S1612259-02_CGAACTTA_L002_R1_001.fastq.gz ../../example_fastqs/1606034-S1612259-02_CGAACTTA_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
 #Merge into one alignment file
-cd ../samtools-1.3.1
-samtools merge ../../home/stpuser/aligned_seqs/1606034-S1612259-02_CGAACTTA.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
+#cd ../samtools-1.3.1
+#samtools merge ../../home/stpuser/aligned_seqs/1606034-S1612259-02_CGAACTTA.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
 #Delete temporary files
-#rm ../../home/stpuser/aligned_seqs/temp_L001.bam
-#rm ../../home/stpuser/aligned_seqs/temp_L002.bam
+rm ../../home/stpuser/aligned_seqs/temp_L001.bam
+rm ../../home/stpuser/aligned_seqs/temp_L002.bam
 #
 #Sample 1607686-S1615531-02_TTCACGCA
-#cd ../software/bwa-0.7.15
-#bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L001_R1_001.fastq.gz ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L001_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L001.bam
-#bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L002_R1_001.fastq.gz ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
+cd ../software/bwa-0.7.15
+bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L001_R1_001.fastq.gz ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L001_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L001.bam
+bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L002_R1_001.fastq.gz ../../example_fastqs/1607686-S1615531-02_TTCACGCA_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
 ##Merge into one alignment file
-#cd ../samtools-1.3.1
-#samtools merge ../../home/stpuser/aligned_seqs/1607686-S1615531-02_TTCACGCA.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
+cd ../samtools-1.3.1
+samtools merge ../../home/stpuser/aligned_seqs/1607686-S1615531-02_TTCACGCA.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
 ##Delete temporary files
-#rm ../../home/stpuser/aligned_seqs/temp_L001.bam
-#rm ../../home/stpuser/aligned_seqs/temp_L002.bam
+rm ../../home/stpuser/aligned_seqs/temp_L001.bam
+rm ../../home/stpuser/aligned_seqs/temp_L002.bam
 #
 ##Sample 1609778-S1620040-02_CGCTGATC
-#cd ../software/bwa-0.7.15
-#bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L001_R1_001.fastq.gz ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L001_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L001.bam
-#bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L002_R1_001.fastq.gz ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
+cd ../software/bwa-0.7.15
+bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L001_R1_001.fastq.gz ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L001_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L001.bam
+bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L002_R1_001.fastq.gz ../../example_fastqs/1609778-S1620040-02_CGCTGATC_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
 ##Merge into one alignment file
-#cd ../samtools-1.3.1
-#samtools merge ../../home/stpuser/aligned_seqs/1609778-S1620040-02_CGCTGATC.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
+cd ../samtools-1.3.1
+samtools merge ../../home/stpuser/aligned_seqs/1609778-S1620040-02_CGCTGATC.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
 ##Delete temporary files
-#rm ../../home/stpuser/aligned_seqs/temp_L001.bam
-#rm ../../home/stpuser/aligned_seqs/temp_L002.bam
+rm ../../home/stpuser/aligned_seqs/temp_L001.bam
+rm ../../home/stpuser/aligned_seqs/temp_L002.bam
 #
 ##Sample 1703057-S1705957-02_AAGACGGA
-#cd ../software/bwa-0.7.15
-#bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L001_R1_001.fastq.gz ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L001_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L001.bam
-#bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L002_R1_001.fastq.gz ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
+cd ../software/bwa-0.7.15
+bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L001_R1_001.fastq.gz ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L001_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L001.bam
+bwa mem ../../reference_files/ucsc.hg19.nohap.masked.fasta ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L002_R1_001.fastq.gz ../../example_fastqs/1703057-S1705957-02_AAGACGGA_L002_R2_001.fastq.gz | samtools view -bh -o ../../home/stpuser/aligned_seqs/temp_L002.bam
 ##Merge into one alignment file
-#cd ../samtools-1.3.1
-#samtools merge ../../home/stpuser/aligned_seqs/1703057-S1705957-02_AAGACGGA.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
+cd ../samtools-1.3.1
+samtools merge ../../home/stpuser/aligned_seqs/1703057-S1705957-02_AAGACGGA.bam ../../home/stpuser/aligned_seqs/temp_L001.bam ../../home/stpuser/aligned_seqs/temp_L002.bam
 ##Delete temporary files
-#rm ../../home/stpuser/aligned_seqs/temp_L001.bam
-#rm ../../home/stpuser/aligned_seqs/temp_L002.bam
+rm ../../home/stpuser/aligned_seqs/temp_L001.bam
+rm ../../home/stpuser/aligned_seqs/temp_L002.bam
 
 ######################################
 # DEFUNCT; CONCATENATING NOT MERGING #
