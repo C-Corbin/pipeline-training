@@ -226,46 +226,91 @@
 ### IDENTIFY TARGET REGIONS
 ### CAN RESTRICT TO THE BROAD BED FILE WITH -L, the GATK 'intervals' option
 #
-#1504850-S1509352-02_GCTCGGTA
-cd ../GenomeAnalysisTK-3.6
+#1504850-S1509352-02_GCTCGGTA - NGD Complete
+#cd ../GenomeAnalysisTK-3.6
 #java -jar GenomeAnalysisTK.jar \
--T RealignerTargetCreator \
--R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
--I ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG.bam \
--o ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG.intervals
+	-T RealignerTargetCreator \
+	-R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	-I ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG.bam \
+	-o ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG.intervals
 #
 #1606034-S1612259-02_CGAACTTA - CTD
 #java -jar GenomeAnalysisTK.jar \
--T RealignerTargetCreator \
--R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
--L ../../example_fastqs/beds/CTDFinaldesignwith25bp_v3.bed \
--I ../../home/stpuser/aligned_seqs/1606034-S1612259-02_CGAACTTA_sorted_dupflag_RG.bam \
--o ../../home/stpuser/aligned_seqs/1606034-S1612259-02_CGAACTTA_sorted_dupflag_RG.intervals
+	-T RealignerTargetCreator \
+	-R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	-L ../../example_fastqs/beds/CTDFinaldesignwith25bp_v3.bed \
+	-I ../../home/stpuser/aligned_seqs/1606034-S1612259-02_CGAACTTA_sorted_dupflag_RG.bam \
+	-o ../../home/stpuser/aligned_seqs/1606034-S1612259-02_CGAACTTA_sorted_dupflag_RG.intervals
 #
 #1607686-S1615531-02_TTCACGCA - Motor Complete
 #java -jar GenomeAnalysisTK.jar \
--T RealignerTargetCreator \
--R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
--L ../../example_fastqs/beds/Motor_CompletePanel_v1.bed \
--I ../../home/stpuser/aligned_seqs/1607686-S1615531-02_TTCACGCA_sorted_dupflag_RG.bam \
--o ../../home/stpuser/aligned_seqs/1607686-S1615531-02_TTCACGCA_sorted_dupflag_RG.intervals
+	-T RealignerTargetCreator \
+	-R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	-L ../../example_fastqs/beds/Motor_CompletePanel_v1.bed \
+	-I ../../home/stpuser/aligned_seqs/1607686-S1615531-02_TTCACGCA_sorted_dupflag_RG.bam \
+	-o ../../home/stpuser/aligned_seqs/1607686-S1615531-02_TTCACGCA_sorted_dupflag_RG.intervals
 #
 #1609778-S1620040-02_CGCTGATC - IEM All Panels
-java -jar GenomeAnalysisTK.jar \
--T RealignerTargetCreator \
--R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
--L ../../example_fastqs/beds/IEM_all_panels_header.bed \
--I ../../home/stpuser/aligned_seqs/1609778-S1620040-02_CGCTGATC_sorted_dupflag_RG.bam \
--o ../../home/stpuser/aligned_seqs/1609778-S1620040-02_CGCTGATC_sorted_dupflag_RG.intervals
+#java -jar GenomeAnalysisTK.jar \
+	-T RealignerTargetCreator \
+	-R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	-L ../../example_fastqs/beds/IEM_all_panels_header.bed \
+	-I ../../home/stpuser/aligned_seqs/1609778-S1620040-02_CGCTGATC_sorted_dupflag_RG.bam \
+	-o ../../home/stpuser/aligned_seqs/1609778-S1620040-02_CGCTGATC_sorted_dupflag_RG.intervals
 #
 #1703057-S1705957-02_AAGACGGA - HeredCancer full
-java -jar GenomeAnalysisTK.jar \
--T RealignerTargetCreator \
--R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
--L ../../example_fastqs/beds/HeredCancer_full_panel_25bp_v1.bed \
--I ../../home/stpuser/aligned_seqs/1703057-S1705957-02_AAGACGGA_sorted_dupflag_RG.bam \
--o ../../home/stpuser/aligned_seqs/1703057-S1705957-02_AAGACGGA_sorted_dupflag_RG.intervals
+#java -jar GenomeAnalysisTK.jar \
+	-T RealignerTargetCreator \
+	-R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	-L ../../example_fastqs/beds/HeredCancer_full_panel_25bp_v1.bed \
+	-I ../../home/stpuser/aligned_seqs/1703057-S1705957-02_AAGACGGA_sorted_dupflag_RG.bam \
+	-o ../../home/stpuser/aligned_seqs/1703057-S1705957-02_AAGACGGA_sorted_dupflag_RG.intervals
+
+
+##  INDEL REALIGNMENT Test run
+#cd ../GenomeAnalysisTK-3.6
+#java -jar GenomeAnalysisTK.jar \
+	-T IndelRealigner \
+	-R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	-L ../../example_fastqs/beds/NGD_CompletePanel_25bp_v2.bed \
+	-I ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG.bam \
+	-targetIntervals ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG.intervals \
+	-o ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.bam
+
+
+#################################
+# EXON PLUS/MINUS 25bp COVERAGE #
+#################################
+
+## Picard BedToIntervalList
+#1504850-S1509352-02_GCTCGGTA - required bed files
+#java -jar picard.jar BedToIntervalList \
+	I=input.bed \
+	O=list.interval_list \
+	SD=reference_sequence.dict
+#FOR DICTIONARY - LOOK IN REFERENCE SEQUENCE FOLDER
+
+#Using master bed as the bait region for now. Test run.
+##  Picard HsMetrics tools for 30X coverage
+#1504850-S1509352-02_GCTCGGTA
+cd ../picard-tools-2.5.0
+java -jar picard.jar CollectHsMetrics \
+	I=../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.bam \
+	o=../../home/stpuser/aligned_seqs/1504850-S1509352-02_hsmetrics.txt \
+	R=../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	BAIT_INTERVALS=../../example_fastqs/beds/NGD_CompletePanel_25bp_v2.bed \
+	TARGET_INTERVALS=../../example_fastqs/beds/NGD_dystonia_v3_25bp.bed
 
 
 
-#INDEL REALIGNMENT
+
+
+
+
+
+
+
+
+
+
+
