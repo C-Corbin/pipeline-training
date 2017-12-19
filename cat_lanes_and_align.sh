@@ -278,32 +278,57 @@
 	-o ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.bam
 
 
-#################################
-# EXON PLUS/MINUS 25bp COVERAGE #
-#################################
+##########################################################
+# EXON PLUS/MINUS 25bp COVERAGE; ON AND OFF TARGET READS #
+##########################################################
 
 ## Picard BedToIntervalList
 #1504850-S1509352-02_GCTCGGTA - required bed files
+#cd ../picard-tools-2.5.0
 #java -jar picard.jar BedToIntervalList \
-	I=input.bed \
-	O=list.interval_list \
-	SD=reference_sequence.dict
-#FOR DICTIONARY - LOOK IN REFERENCE SEQUENCE FOLDER
+	I=../../example_fastqs/beds/NGD_CompletePanel_25bp_v2.bed \
+	O=../../home/stpuser/bed_intervals/NGD_CompletePanel_25bp_v2.intervals \
+	SD=../../reference_files/ucsc.hg19.nohap.masked.dict
+#java -jar picard.jar BedToIntervalList \
+	I=../../example_fastqs/beds/NGD_dystonia_v3_25bp.bed \
+	O=../../home/stpuser/bed_intervals/NGD_dystonia_v3_25bp.intervals \
+	SD=../../reference_files/ucsc.hg19.nohap.masked.dict
+
 
 #Using master bed as the bait region for now. Test run.
 ##  Picard HsMetrics tools for 30X coverage
 #1504850-S1509352-02_GCTCGGTA
-cd ../picard-tools-2.5.0
-java -jar picard.jar CollectHsMetrics \
+#cd ../picard-tools-2.5.0
+#java -jar picard.jar CollectHsMetrics \
 	I=../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.bam \
 	o=../../home/stpuser/aligned_seqs/1504850-S1509352-02_hsmetrics.txt \
 	R=../../reference_files/ucsc.hg19.nohap.masked.fasta \
-	BAIT_INTERVALS=../../example_fastqs/beds/NGD_CompletePanel_25bp_v2.bed \
-	TARGET_INTERVALS=../../example_fastqs/beds/NGD_dystonia_v3_25bp.bed
+	BAIT_INTERVALS=../../home/stpuser/bed_intervals/NGD_CompletePanel_25bp_v2.intervals \
+	TARGET_INTERVALS=../../home/stpuser/bed_intervals/NGD_dystonia_v3_25bp.intervals
+
+	
+## Use Sambamba for exonic coverage
+## DOESN'T WORK YET
+
+#1504850-S1509352-02_GCTCGGTA
+#cd ../sambamba_v0.6.3
+#sambamba depth region -L ../../example_fastqs/beds/NGD_dystonia_v3_25bp.bed -T 30 -m -F “mapping_quality >= 30” ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.bam > ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.sambamba_output.bed
 
 
-
-
+###################
+# VARIANT CALLING #
+###################
+#Use GATK haplotype caller
+cd ../GenomeAnalysisTK-3.6
+java -jar GenomeAnalysisTK.jar \
+	-R ../../reference_files/ucsc.hg19.nohap.masked.fasta \
+	-T HaplotypeCaller \
+	-I ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.bam \
+	-L ../../example_fastqs/beds/NGD_CompletePanel_25bp_v2.bed \
+	-stand_call_conf 30 \
+	--output_mode EMIT_VARIANTS_ONLY \
+	-maxAltAlleles 10 \
+	-o ../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants.vcf
 
 
 
