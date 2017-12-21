@@ -315,9 +315,10 @@
 #sambamba depth region -L ../../example_fastqs/beds/NGD_dystonia_v3_25bp.bed -T 30 -m -F “mapping_quality >= 30” ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.bam > ../../home/stpuser/aligned_seqs/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned.sambamba_output.bed
 #
 
-##################################
-# VARIANT CALLING AND ANNOTATING #
-##################################
+###############################################
+# VARIANT CALLING, DECOMPOSING AND ANNOTATING #
+###############################################
+#
 #Call variants with GATK haplotype caller
 #cd ../GenomeAnalysisTK-3.6
 #java -jar GenomeAnalysisTK.jar \
@@ -330,23 +331,29 @@
 #	-maxAltAlleles 10 \
 #	-o ../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants.vcf
 
-#Annotate with SnpEff (used in our pipeline)
+#Decompose variants with Vt
+#cd ../vt
+#vt decompose ../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants.vcf -o ../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants_decomp.vcf
+
+#Annotate the decomposed variants. Restrict to small bed.
+#SnpEff, human genome 37
+#Use following command to look at human databases: java -jar snpEff.jar databases | less | grep "Homo*" 
+#cd ../snpEff
+#java -Xmx4g -jar snpEff.jar \
+#-fi ../../example_fastqs/beds/NGD_dystonia_v3_25bp.bed \
+#GRCh37.75 \
+#../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants_decomp.vcf > \
+#../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants_decomp_ann.vcf
+#
+#SnpSift for dbSNP
 cd ../snpEff
-#Look at human databases - GRCh37.75 available
-#java -jar snpEff.jar databases | less | grep "Homo*" 
-#Annotate to human genome 37 with dbSNP annotations. Specify intervals broad bed. DON'T ADD dbSNP NUMBERS YET!
-java -Xmx4g -jar snpEff.jar \
--fi ../../example_fastqs/beds/NGD_dystonia_v3_25bp.bed \
-GRCh37.75 \
-../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants.vcf > ../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants_ann.vcf
+java -jar SnpSift.jar annotate ../../reference_files/dbsnp/common_all_20161122.vcf.gz \
+ ../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants_decomp.vcf > \
+../../home/stpuser/vcf/1504850-S1509352-02_GCTCGGTA_sorted_dupflag_RG_realigned_variants_decomp_dbsnp.vcf
+#Ran, but don't think rs number added correctly
 
-#Next: decompose the ALT column to put second alleles on a spare row, and then annotate with dbSNP
-#Filter out those with dbSNP frequency above 5%
-
-
-
-
-
+#Next: fix the dbSNP annotations
+#After: filter variants above 5%
 
 
 
