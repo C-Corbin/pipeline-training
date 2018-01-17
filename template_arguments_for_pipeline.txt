@@ -1,0 +1,5 @@
+#Arguments to paste after bash cat_lanes_and_align.sh#
+/example_fastqs/SAMPLE_L1_R1.fastq.gz,/example_fastqs/SAMPLE_L1_R2.fastq.gz,/example_fastqs/SAMPLE_L2_R1.fastq.gz,/example_fastqs/SAMPLE_L2_R2.fastq.gz SAMPLE_HEADER dummy_pipeline SureSelect /FILEPATH/FULL_BROAD_PANEL_BED.bed /FILEPATH/NFULL_SMALL_PANEL_BED_often_25bp.bed /FILEPATH/POLY_LIST.txt 2018 Chris_C 1 /FILEPATH/FULL_TRANS_FILE.txt /FILEPATH/OUTPUT_DIRECTORY 2 False False
+#Latter two are 'rescoping' and 'exome'#
+
+

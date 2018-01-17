@@ -1,0 +1,3 @@
+#Arguments to paste after bash cat_lanes_and_align.sh#
+/example_fastqs/1504850-S1509352-02_GCTCGGTA_L001_R1_001.fastq.gz,/example_fastqs/1504850-S1509352-02_GCTCGGTA_L001_R2_001.fastq.gz,/example_fastqs/1504850-S1509352-02_GCTCGGTA_L002_R1_001.fastq.gz,/example_fastqs/1504850-S1509352-02_GCTCGGTA_L002_R2_001.fastq.gz 1504850-S1509352-02_GCTCGGTA dummy_pipeline SureSelect /example_fastqs/beds/NGD_CompletePanel_25bp_v2.bed /example_fastqs/beds/NGD_dystonia_v3_25bp.bed /FILEPATH/POLY_LIST.txt 2018 Chris_C 1 /FILEPATH/FULL_TRANS_FILE.txt /FILEPATH/OUTPUT_DIRECTORY 2 False False
+#Latter two are 'rescoping' and 'exome'#
